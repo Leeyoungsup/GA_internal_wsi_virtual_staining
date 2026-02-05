@@ -1,0 +1,60 @@
+
+================================================================================
+                    CYCLEGAN VIRTUAL STAINING TEST REPORT
+                        IHC to HE Translation Evaluation
+================================================================================
+
+TEST CONFIGURATION
+--------------------------------------------------------------------------------
+Model Path:           ../../model/HE_IHC_translation/internal_ss/PD-L1/F_99.pth
+Test Samples:         100
+Image Size:           512x512
+Device:               cuda:0
+Model Epoch:          99
+
+IMPORTANT NOTE
+--------------------------------------------------------------------------------
+IHC and HE images are from CONSECUTIVE TISSUE SECTIONS, not pixel-aligned.
+Therefore, only DISTRIBUTION-BASED metrics are reported:
+  ✓ FID (Fréchet Inception Distance) - Primary GAN metric
+  ✓ Inception Score (IS) - Quality and diversity measure
+  ✓ Color Histogram Correlation - Stain color distribution
+  ✓ Texture Similarity - GLCM Haralick features for tissue structure
+
+Pixel-wise metrics (PSNR, SSIM, MAE, LPIPS) are NOT applicable because
+they require spatial correspondence between images.
+
+QUANTITATIVE RESULTS
+--------------------------------------------------------------------------------
+Metric                Value
+--------------------------------------------------------------------------------
+Histogram Corr       0.7780 ± 0.1710
+Texture Similarity   0.8110 ± 0.1218
+Inception Score      3.06 ± 0.41
+FID (Baseline)       182.70
+FID (Fake-Real)      133.37
+FID Difference       -49.33
+--------------------------------------------------------------------------------
+
+INTERPRETATION
+--------------------------------------------------------------------------------
+FID:  Moderate (target: <50)
+FID Baseline: 182.70 (noise floor)
+Inception Score: Moderate (real images: >10)
+Color Match: Moderate (target: >0.9)
+Texture Match: Good (target: >0.8)
+
+OUTPUT FILES
+--------------------------------------------------------------------------------
+✓ Quantitative results:     ../../results/HE_IHC_translation/internal_ss/PD-L1/test_results/quantitative_results.csv
+✓ LaTeX table:             ../../results/HE_IHC_translation/internal_ss/PD-L1/test_results/paper_table.tex
+✓ Metric distributions:    ../../results/HE_IHC_translation/internal_ss/PD-L1/test_results/visualizations/metric_distributions.png
+✓ GAN metrics summary:     ../../results/HE_IHC_translation/internal_ss/PD-L1/test_results/visualizations/gan_metrics_summary.png
+✓ Color histograms:        ../../results/HE_IHC_translation/internal_ss/PD-L1/test_results/visualizations/color_histograms.png
+✓ Qualitative results:     ../../results/HE_IHC_translation/internal_ss/PD-L1/test_results/visualizations/qualitative_results.png
+✓ Best cases:              ../../results/HE_IHC_translation/internal_ss/PD-L1/test_results/visualizations/best_cases.png
+✓ Worst cases:             ../../results/HE_IHC_translation/internal_ss/PD-L1/test_results/visualizations/worst_cases.png
+
+================================================================================
+                    EVALUATION COMPLETED SUCCESSFULLY
+================================================================================
